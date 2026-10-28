@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cookie Monster</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="brand">
+        <img class="logo" src="cookie-gear.png" width="28" height="28" alt="" />
+        <h1>Cookie Monster</h1>
+      </div>
+      <span id="mode" class="badge" data-state="offline">…</span>
+    </header>
+
+    <nav class="tabs" role="tablist">
+      <button type="button" class="tab active" data-tab="control" role="tab">
+        <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 9.2 5H13l-3 2.2L11.2 11 8 8.7 4.8 11l1.2-3.8L3 5h3.8L8 1.5z"/></svg>
+        Control
+      </button>
+      <button type="button" class="tab" data-tab="activity" role="tab">
+        <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 12h2V7H2v5zm5 0h2V4H7v8zm5 0h2V9h-2v3z"/></svg>
+        Activity
+      </button>
+      <button type="button" class="tab" data-tab="setup" role="tab">
+        <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3h4v4H3V3zm6 0h4v4H9V3zM3 9h4v4H3V9zm6 1.5L12.5 14 14 12.5 10.5 9 9 10.5z"/></svg>
+        Setup
+      </button>
+      <button type="button" class="tab" data-tab="settings" role="tab">
+        <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 2h3l.4 1.6a5 5 0 0 1 1.2.7L12.7 4l1.5 2.6-1.3 1a5 5 0 0 1 0 1.4l1.3 1-1.5 2.6-1.6-.3a5 5 0 0 1-1.2.7L9.5 14h-3l-.4-1.6a5 5 0 0 1-1.2-.7L3.3 12 1.8 9.4l1.3-1a5 5 0 0 1 0-1.4l-1.3-1L3.3 4l1.6.3a5 5 0 0 1 1.2-.7L6.5 2zM8 6.2A1.8 1.8 0 1 0 8 9.8 1.8 1.8 0 0 0 8 6.2z"/></svg>
+        Settings
+      </button>
+    </nav>
+
+    <main>
+      <section id="panel-control" class="panel active" role="tabpanel">
+        <div class="row-label">
+          <span>Mode</span>
+          <button type="button" class="info" data-tip="mode" aria-label="About modes">i</button>
+        </div>
+        <div class="modes" role="group" aria-label="Mode">
+          <button type="button" data-mode="observe" class="btn-3d">
+            <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3c3.2 0 5.8 2.2 6.8 5-1 2.8-3.6 5-6.8 5S2.2 10.8 1.2 8C2.2 5.2 4.8 3 8 3zm0 2.2A2.8 2.8 0 1 0 8 10.8 2.8 2.8 0 0 0 8 5.2z"/></svg>
+            Observe
+          </button>
+          <button type="button" data-mode="moderate" class="btn-3d">
+            <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 13.5 4v3.2c0 3.4-2.3 5.8-5.5 6.8C4.8 13 2.5 10.6 2.5 7.2V4L8 1.5zm0 2.3L4.2 5.3v1.9c0 2.3 1.5 4 3.8 4.8 2.3-.8 3.8-2.5 3.8-4.8V5.3L8 3.8z"/></svg>
+            Moderate
+          </button>
+          <button type="button" data-mode="cookie_monster" class="btn-3d">
+            <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="6" cy="6.5" r="1"/><circle cx="9.5" cy="7.5" r="1"/><circle cx="7" cy="10" r="1"/></svg>
+            Cookie Monster
+          </button>
+        </div>
+
+        <div class="row-label">
+          <span>Allowlist</span>
+          <button type="button" class="info" data-tip="allowlist" aria-label="About allowlist">i</button>
+        </div>
+        <textarea id="allowlist" rows="2" placeholder="github.com, example.com" spellcheck="false"></textarea>
+        <button type="button" id="save-allowlist" class="primary btn-3d">
+          <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 2.5h7.2L13 4.8v8.7H3.5V2.5zm2 1.5v3h5v-3h-5zm0 5v3.5h5V9h-5z"/></svg>
+          Save allowlist
+        </button>
+
+        <div class="row-label">
+          <span>Shields</span>
+          <button type="button" class="info" data-tip="shields" aria-label="About shields">i</button>
+        </div>
+        <div class="shields">
+          <label class="toggle">
+            <input type="checkbox" id="browser-shield" checked disabled />
+            <span>Browser shield</span>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" id="system-shield" />
+            <span>System shield</span>
+          </label>
+        </div>
+        <div class="quick-actions">
+          <button type="button" id="btn-shield-on" class="ghost btn-3d">
+            <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 13.5 4v3.2c0 3.4-2.3 5.8-5.5 6.8C4.8 13 2.5 10.6 2.5 7.2V4L8 1.5z"/></svg>
+            Shield on
+          </button>
+          <button type="button" id="btn-shield-off" class="ghost btn-3d">
+            <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 13.5 4v3.2c0 1.5-.4 2.8-1.1 3.9L3.8 2.5 8 1.5zm-5 3.2.7.7L12 13.7c-.9.7-2 1.2-3.2 1.5C5.6 14.2 3 11.8 3 8.4V4.7z"/><path d="M2 2.5 13.5 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Shield off
+          </button>
+        </div>
+      </section>
+
+      <section id="panel-activity" class="panel" role="tabpanel" hidden>
+        <div class="row-label">
+          <span>Live feed</span>
+          <button type="button" class="info" data-tip="feed" aria-label="About feed">i</button>
+        </div>
+        <ul id="feed"></ul>
+        <p id="feed-empty" class="empty">No events yet</p>
+        <button type="button" id="clear-activity" class="ghost danger-text btn-3d">
+          <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 2.5h5l.5 1H14v1.5H2V3.5h3l.5-1zM3.5 6h9l-.7 7.2a1.2 1.2 0 0 1-1.2 1.1H5.4a1.2 1.2 0 0 1-1.2-1.1L3.5 6z"/></svg>
+          Clear activity
+        </button>
+      </section>
+
+      <section id="panel-setup" class="panel" role="tabpanel" hidden>
+        <div class="row-label">
+          <span>Progress</span>
+          <button type="button" class="info" data-tip="setup" aria-label="About setup">i</button>
+        </div>
+        <ol class="steps">
+          <li data-step="host"><span class="step-mark"></span><div><strong>Core host</strong></div></li>
+          <li data-step="ca"><span class="step-mark"></span><div><strong>Trust Local CA</strong></div></li>
+          <li data-step="extension"><span class="step-mark"></span><div><strong>Browser extension</strong></div></li>
+          <li data-step="proxy"><span class="step-mark"></span><div><strong>System shield / proxy</strong></div></li>
+        </ol>
+        <button type="button" id="rerun-setup" class="primary btn-3d">
+          <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M12.5 3.5A5.5 5.5 0 1 0 13.2 9H11.5a3.8 3.8 0 1 1-.2-4.2L9.5 6.5H14V2L12.5 3.5z"/></svg>
+          Run setup again
+        </button>
+      </section>
+
+      <section id="panel-settings" class="panel" role="tabpanel" hidden>
+        <div class="row-label">
+          <span>Data</span>
+          <button type="button" class="info" data-tip="data" aria-label="About data">i</button>
+        </div>
+        <p class="settings-meta" id="store-stats">Encrypted log · local only</p>
+        <div class="settings-row">
+          <label for="retention-days">Auto-prune</label>
+          <select id="retention-days">
+            <option value="7">7 days</option>
+            <option value="14">14 days</option>
+            <option value="30" selected>30 days</option>
+            <option value="90">90 days</option>
+          </select>
+        </div>
+        <div class="settings-actions">
+          <button type="button" id="btn-clear-events" class="ghost btn-3d" title="Clear activity log">
+            <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 2.5h5l.5 1H14v1.5H2V3.5h3l.5-1zM3.5 6h9l-.7 7.2a1.2 1.2 0 0 1-1.2 1.1H5.4a1.2 1.2 0 0 1-1.2-1.1L3.5 6z"/></svg>
+            Clear log
+          </button>
+          <button type="button" id="btn-open-data" class="ghost btn-3d" title="Open data folder">
+            <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 3.5h4l1.2 1.5H13.5v7.5H2.5V3.5z"/></svg>
+            Data folder
+          </button>
+        </div>
+
+        <div class="row-label">
+          <span>System</span>
+          <button type="button" class="info" data-tip="system" aria-label="About system">i</button>
+        </div>
+        <div class="settings-actions">
+          <button type="button" id="btn-proxy-on" class="ghost btn-3d" title="Turn proxy on">
+            <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M10 5l3 3-3 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Proxy on
+          </button>
+          <button type="button" id="btn-proxy-off" class="ghost btn-3d" title="Turn proxy off">
+            <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M6 5 3 8l3 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Proxy off
+          </button>
+          <button type="button" id="btn-restart-host" class="ghost btn-3d" title="Restart core">
+            <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M12.5 3.5A5.5 5.5 0 1 0 13.2 9H11.5a3.8 3.8 0 1 1-.2-4.2L9.5 6.5H14V2L12.5 3.5z"/></svg>
+            Restart core
+          </button>
+          <button type="button" id="btn-reset-setup" class="ghost danger-text btn-3d" title="Reset setup wizard">
+            <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 4.5h10M5.5 4.5V3.2A1.2 1.2 0 0 1 6.7 2h2.6a1.2 1.2 0 0 1 1.2 1.2v1.3M6 7v5M10 7v5M4.5 4.5l.6 8.2A1.2 1.2 0 0 0 6.3 14h3.4a1.2 1.2 0 0 0 1.2-1.3l.6-8.2"/></svg>
+            Reset setup
+          </button>
+        </div>
+        <p class="settings-meta tip-inline">
+          <button type="button" class="info" data-tip="reset" aria-label="About reset setup">i</button>
+          Reset setup only re-shows the wizard
+        </p>
+      </section>
+    </main>
+
+    <p id="error" class="error" hidden></p>
+
+    <div id="tip" class="popover" hidden role="dialog" aria-modal="true">
+      <div class="popover-card">
+        <header>
+          <strong id="tip-title"></strong>
+          <button type="button" id="tip-close" aria-label="Close">×</button>
+        </header>
+        <p id="tip-body"></p>
+      </div>
+    </div>
+
+    <div id="wizard" class="popover" hidden role="dialog" aria-modal="true">
+      <div class="popover-card wizard-card">
+        <p class="wizard-progress" id="wizard-progress">Step 1 of 5</p>
+        <header>
+          <strong id="wizard-title">Welcome</strong>
+        </header>
+        <p id="wizard-body"></p>
+        <p id="wizard-status" class="wizard-status" hidden></p>
+        <div class="modal-actions wizard-actions">
+          <button type="button" id="wizard-secondary" class="btn-3d" hidden>Skip</button>
+          <button type="button" id="wizard-primary" class="primary btn-3d">Continue</button>
+        </div>
+        <button type="button" id="wizard-finish" class="linkish">Finish setup &amp; use app</button>
+      </div>
+    </div>
+
+    <div id="shield-modal" class="popover" hidden role="dialog" aria-modal="true">
+      <div class="popover-card">
+        <header>
+          <strong>Enable System shield?</strong>
+          <button type="button" id="shield-close" aria-label="Close">×</button>
+        </header>
+        <p>
+          Turns on the local proxy (<code>127.0.0.1:8877</code>). HTTPS needs the Local CA trusted.
+          Traffic stays on this device.
+        </p>
+        <div class="modal-actions">
+          <button type="button" id="shield-cancel" class="btn-3d">Cancel</button>
+          <button type="button" id="shield-confirm" class="primary btn-3d">Enable</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

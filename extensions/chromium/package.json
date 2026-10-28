@@ -1,0 +1,19 @@
+{
+  "name": "@cookiemonster/chromium",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/background.ts --bundle --format=esm --platform=browser --outfile=dist/background.js",
+    "build:safari": "esbuild src/background.ts --bundle --format=esm --platform=browser --outfile=../safari/background.js --define:COOKIE_MONSTER_SAFARI=true",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.287",
+    "@types/node": "^22.10.7",
+    "esbuild": "^0.24.2",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
+  }
+}
