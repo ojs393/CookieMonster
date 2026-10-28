@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Cookie Monster fixtures</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 40rem; margin: 2rem auto; line-height: 1.5; }
+    code { background: #f4f4f4; padding: 0.1rem 0.3rem; }
+    li { margin: 0.4rem 0; }
+  </style>
+</head>
+<body>
+  <h1>Cookie Monster fixture sites</h1>
+  <p>
+    Synthetic cookies only (<code>cm_test</code>, <code>cm_js</code>).
+    Do not paste real session cookies here.
+  </p>
+  <p>
+    Start with <code>./serve.sh</code> (or <code>python3 server.py</code>) so
+    <code>/set</code> can return <code>Set-Cookie: cm_test=1; Path=/</code>.
+    Plain <code>python3 -m http.server</code> serves these pages but cannot
+    emit HTTP <code>Set-Cookie</code>.
+  </p>
+  <ul>
+    <li><a href="/first-party.html">First-party HTTP Set-Cookie</a> via <code>/set</code></li>
+    <li><a href="/js-cookie.html">JS <code>document.cookie</code></a></li>
+    <li><a href="/set">Trigger <code>/set</code> now</a> (redirects back to the first-party page)</li>
+  </ul>
+</body>
+</html>

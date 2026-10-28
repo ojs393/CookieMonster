@@ -1,0 +1,9 @@
+{
+  "name": "com.cookiemonster.host",
+  "description": "CookieMonster native messaging host",
+  "path": "__COOKIE_MONSTER_NATIVE_HOST_PATH__",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://__COOKIE_MONSTER_EXTENSION_ID__/"
+  ]
+}

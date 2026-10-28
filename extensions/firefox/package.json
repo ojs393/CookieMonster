@@ -1,0 +1,13 @@
+{
+  "name": "@cookiemonster/firefox",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild ../chromium/src/background.ts --bundle --format=iife --platform=browser --outfile=dist/background.js",
+    "test": "npm --prefix ../chromium test"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.12"
+  }
+}

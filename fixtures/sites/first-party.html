@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>First-party Set-Cookie fixture</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 40rem; margin: 2rem auto; line-height: 1.5; }
+    code, pre { background: #f4f4f4; padding: 0.1rem 0.3rem; }
+    pre { padding: 0.75rem; }
+  </style>
+</head>
+<body>
+  <p><a href="/">← fixtures</a></p>
+  <h1>First-party HTTP cookie</h1>
+  <p>
+    <a href="/set">GET /set</a> from <code>server.py</code> returns
+    <code>Set-Cookie: cm_test=1; Path=/</code> and redirects here.
+    Static <code>python3 -m http.server</code> cannot do this.
+  </p>
+  <p>Visible <code>document.cookie</code> (synthetic <code>cm_test=1</code> after /set):</p>
+  <pre id="cookies"></pre>
+  <script>
+    document.getElementById("cookies").textContent = document.cookie || "(none)";
+  </script>
+</body>
+</html>

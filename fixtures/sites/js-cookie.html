@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>JS document.cookie fixture</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 40rem; margin: 2rem auto; line-height: 1.5; }
+    code, pre { background: #f4f4f4; padding: 0.1rem 0.3rem; }
+    pre { padding: 0.75rem; }
+  </style>
+</head>
+<body>
+  <p><a href="/">← fixtures</a></p>
+  <h1>JS document.cookie</h1>
+  <p>
+    Sets a synthetic cookie with <code>document.cookie</code>.
+    Value is always <code>1</code> — no real cookies.
+  </p>
+  <button type="button" id="set">Set cm_js=1</button>
+  <button type="button" id="clear">Clear cm_js</button>
+  <p>Visible <code>document.cookie</code>:</p>
+  <pre id="cookies"></pre>
+  <script>
+    function show() {
+      document.getElementById("cookies").textContent = document.cookie || "(none)";
+    }
+    document.getElementById("set").onclick = function () {
+      document.cookie = "cm_js=1; Path=/";
+      show();
+    };
+    document.getElementById("clear").onclick = function () {
+      document.cookie = "cm_js=; Path=/; Max-Age=0";
+      show();
+    };
+    document.cookie = "cm_js=1; Path=/";
+    show();
+  </script>
+</body>
+</html>
